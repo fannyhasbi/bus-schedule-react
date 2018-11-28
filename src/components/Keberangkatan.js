@@ -52,7 +52,7 @@ class Keberangkatan extends React.Component {
           <tbody>
             {
               this.state.departures.map((el, i) => 
-                <tr>
+                <tr key={el.id}>
                   <td>{ el.perusahaan }</td>
                   <td>{ el.asal }</td>
                   <td>{ el.tujuan }</td>

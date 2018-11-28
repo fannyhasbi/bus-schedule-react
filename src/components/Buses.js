@@ -30,7 +30,7 @@ class Buses extends React.Component {
         <ul>
           {
             this.state.buses.map((el, i) => (
-              <li>{ el.perusahaan }</li>
+              <li key={el.id}>{ el.perusahaan }</li>
             ))
           }
         </ul>
