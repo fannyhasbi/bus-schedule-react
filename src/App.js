@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+// Screen Components
+import Home from './components/Home';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Bus Scheduling System</h1>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route exact path="/"component={Home} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
