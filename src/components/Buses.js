@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Buses extends React.Component {
   constructor(props){
@@ -26,6 +27,8 @@ class Buses extends React.Component {
     return (
       <div>
         <h1>List Bus</h1>
+
+        <Link to="/add-bus">Tambah Bus</Link>
 
         <ul>
           {
