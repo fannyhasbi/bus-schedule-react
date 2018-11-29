@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class Keberangkatan extends React.Component {
+class Departure extends React.Component {
   constructor(props){
     super(props);
 
@@ -38,6 +39,7 @@ class Keberangkatan extends React.Component {
     return (
       <div>
         <h1>Jadwal Keberangkatan Bus</h1>
+        <Link to="/add-departure">Tambah Jadwal Keberangkatan</Link><br/><br/>
 
         <table border="1" cellSpacing="0" cellPadding="5">
           <thead>
@@ -68,4 +70,4 @@ class Keberangkatan extends React.Component {
   }
 }
 
-export default Keberangkatan;
+export default Departure;
