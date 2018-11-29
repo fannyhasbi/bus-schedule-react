@@ -1,26 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+import BSR_APP from '../../config/constant';
 
 class Buses extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
-      buses: [
-        {
-          id: 1,
-          perusahaan: 'Sinar Jaya'
-        },
-        {
-          id: 2,
-          perusahaan: 'Nusantara'
-        },
-        {
-          id: 3,
-          perusahaan: 'Subur Jaya'
-        }
-      ]
+      buses: []
     }
+  }
+
+  componentDidMount(){
+    axios.get(BSR_APP.url + '/api/bus')
+    .then((response) => {
+      console.log(response);
+      if(response.data.status === 200){
+        this.setState({
+          buses: response.data.data
+        });
+      }
+    })
+    .catch((error) => {
+      Swal("Oops", "Maaf, sedang terjadi kesalahan", "warning");
+      console.log(error);
+    });
   }
 
   render(){
@@ -33,7 +40,7 @@ class Buses extends React.Component {
         <ul>
           {
             this.state.buses.map((el, i) => (
-              <li key={el.id}>{ el.perusahaan }</li>
+              <li key={el.id}>{ el.nama }</li>
             ))
           }
         </ul>
