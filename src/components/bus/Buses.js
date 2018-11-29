@@ -17,7 +17,6 @@ class Buses extends React.Component {
   componentDidMount(){
     axios.get(BSR_APP.url + '/api/bus')
     .then((response) => {
-      console.log(response);
       if(response.data.status === 200){
         this.setState({
           buses: response.data.data

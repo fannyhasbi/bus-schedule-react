@@ -17,7 +17,6 @@ class Departure extends React.Component {
   componentDidMount(){
     axios.get(BSR_APP.url + '/api/departure')
     .then((response) => {
-      console.log(response.data);
       if(response.data.status === 200){
         this.setState({
           departures: response.data.data
