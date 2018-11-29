@@ -1,10 +1,13 @@
 import React from 'react';
+import { Redirect } from 'react-router';
+import Swal from 'sweetalert2';
 
 class AddBus extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
+      is_done: false,
       perusahaan: ''
     }
 
@@ -12,10 +15,18 @@ class AddBus extends React.Component {
   }
 
   handleSave(){
-    // alert(this.state.perusahaan);
+    Swal({
+      title: 'Berhasil menyimpan',
+      type: 'success',
+    }).then(() => {
+      this.setState({ is_done: true });
+    })
   }
   
   render(){
+    if(this.state.is_done)
+      return <Redirect to="/buses" />
+
     return (
       <div>
         <h1>Tambah Bus</h1>
