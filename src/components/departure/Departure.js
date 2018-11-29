@@ -1,38 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+import BSR_APP from '../../config/constant';
 
 class Departure extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
-      departures: [
-        {
-          id: 1,
-          perusahaan: 'Sinar Jaya',
-          asal: 'Semarang',
-          tujuan: 'Tegal',
-          berangkat: '15.00',
-          sampai: '18.00'
-        },
-        {
-          id: 2,
-          perusahaan: 'Sinar Jaya',
-          asal: 'Semarang',
-          tujuan: 'Tegal',
-          berangkat: '16.00',
-          sampai: '19.00'
-        },
-        {
-          id: 3,
-          perusahaan: 'Nusantara',
-          asal: 'Semarang',
-          tujuan: 'Pekalongan',
-          berangkat: '16.00',
-          sampai: '18.00'
-        }
-      ]
+      departures: []
     }
+  }
+
+  componentDidMount(){
+    axios.get(BSR_APP.url + '/api/departure')
+    .then((response) => {
+      console.log(response.data);
+      if(response.data.status === 200){
+        this.setState({
+          departures: response.data.data
+        });
+      }
+    })
+    .catch((error) => {
+      Swal("Oops", "Maaf, sedang terjadi kesalahan", "warning");
+      console.log(error);
+    });
   }
 
   render(){
@@ -55,9 +50,9 @@ class Departure extends React.Component {
             {
               this.state.departures.map((el, i) => 
                 <tr key={el.id}>
-                  <td>{ el.perusahaan }</td>
-                  <td>{ el.asal }</td>
-                  <td>{ el.tujuan }</td>
+                  <td>{ el.nama_perusahaan }</td>
+                  <td>{ el.nama_asal }</td>
+                  <td>{ el.nama_tujuan }</td>
                   <td>{ el.berangkat }</td>
                   <td>{ el.sampai }</td>
                 </tr>
