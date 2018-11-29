@@ -92,7 +92,7 @@ class AddDeparture extends React.Component {
       else {
         Swal({
           title: 'Oops',
-          text: 'Maaf, sedang terjadi kesalahan 1',
+          text: 'Maaf, sedang terjadi kesalahan',
           type: 'warning',
         });
       }
