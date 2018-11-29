@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Arrival extends React.Component {
   constructor(props){
@@ -38,6 +39,9 @@ class Arrival extends React.Component {
     return (
       <div>
         <h1>Jadwal Kedatangan Bus</h1>
+
+        <Link to="/add-arrival">Tambah Jadwal Kedatangan</Link>
+        <br /><br />
 
         <table border="1" cellSpacing="0" cellPadding="5">
           <thead>

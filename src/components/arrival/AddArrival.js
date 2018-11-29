@@ -14,20 +14,20 @@ class AddDeparture extends React.Component {
       asal: 'Semarang',
       tujuan: 'Tegal',
       berangkat: '15:00',
-      sampai: '18:00'
+      datang: '18:00'
     }
 
     this.handleSave = this.handleSave.bind(this);
     this.handleBerangkat = this.handleBerangkat.bind(this);
-    this.handleSampai = this.handleSampai.bind(this);
+    this.handleDatang = this.handleDatang.bind(this);
   }
 
   handleBerangkat(val){
     this.setState({ berangkat: val });
   }
 
-  handleSampai(val){
-    this.setState({ sampai: val });
+  handleDatang(val){
+    this.setState({ datang: val });
   }
 
   handleSave(e){
@@ -35,18 +35,18 @@ class AddDeparture extends React.Component {
     Swal({
       title: "Berhasil menyimpan",
       type: "success"
-    }).then((result) => {
+    }).then(() => {
       this.setState({ is_done: true });
     });
   }
 
   render(){
     if(this.state.is_done)
-      return <Redirect to="/departure" />
+      return <Redirect to="/arrival" />
 
     return (
       <div>
-        <h1>Tambah Jadwal Keberangkatan Bus</h1>
+        <h1>Tambah Jadwal Kedatangan Bus</h1>
         <br/>
 
         <form onSubmit={this.handleSave} >
@@ -70,10 +70,10 @@ class AddDeparture extends React.Component {
           />
           <br/>
 
-          <label htmlFor="sampai">Jam Sampai</label>
+          <label htmlFor="datang">Jam Kedatangan</label>
           <TimeInput
-            initTime={this.state.sampai}
-            onTimeChange={this.handleSampai}
+            initTime={this.state.datang}
+            onTimeChange={this.handleDatang}
           />
           <br/>
 

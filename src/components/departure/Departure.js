@@ -39,7 +39,7 @@ class Departure extends React.Component {
     return (
       <div>
         <h1>Jadwal Keberangkatan Bus</h1>
-        <Link to="/add-departure">Tambah Keberangkatan</Link><br/><br/>
+        <Link to="/add-departure">Tambah Jadwal Keberangkatan</Link><br/><br/>
 
         <table border="1" cellSpacing="0" cellPadding="5">
           <thead>
