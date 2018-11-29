@@ -1,6 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router';
+import qs from 'qs';
+import axios from 'axios';
 import Swal from 'sweetalert2';
+
+import BSR_APP from '../../config/constant';
 
 class AddBus extends React.Component {
   constructor(props){
@@ -15,12 +19,44 @@ class AddBus extends React.Component {
   }
 
   handleSave(){
-    Swal({
-      title: 'Berhasil menyimpan',
-      type: 'success',
-    }).then(() => {
-      this.setState({ is_done: true });
+    const postData = qs.stringify({
+      perusahaan: this.state.perusahaan,
+    });
+
+    axios.post(BSR_APP.url + '/api/add-bus',
+      postData,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    )
+    .then((response) => {
+      if(response.data.status === 200){
+        Swal({
+          title: 'Berhasil',
+          text: 'Perusahaan Bus berhasil ditambahkan',
+          type: 'success',
+        }).then(() => {
+          this.setState({ is_done: true });
+        });
+      }
+      else {
+        Swal({
+          title: 'Oops',
+          text: 'Maaf, sedang terjadi kesalahan',
+          type: 'warning',
+        });
+      }
     })
+    .catch((error) => {
+      Swal({
+        title: 'Oops',
+        text: 'Maaf, sedang terjadi kesalahan',
+        type: 'warning',
+      });
+      console.log('error', error);
+    });
   }
   
   render(){
