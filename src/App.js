@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 // Screen Components
 import Home from './components/Home';
 
-import Buses from './components/Buses';
-import AddBus from './components/AddBus';
+import Buses from './components/bus/Buses';
+import AddBus from './components/bus/AddBus';
 
-import Keberangkatan from './components/Keberangkatan';
+import Departure from './components/departure/Departure';
+import AddDeparture from './components/departure/AddDeparture';
 
 class App extends Component {
   render() {
@@ -23,7 +24,8 @@ class App extends Component {
           <Route exact path="/"component={Home} />
           <Route path="/buses" component={Buses} />
           <Route path="/add-bus" component={AddBus} />
-          <Route path="/departure" component={Keberangkatan} />
+          <Route path="/departure" component={Departure} />
+          <Route path="/add-departure" component={AddDeparture} />
         </div>
       </BrowserRouter>
     );
