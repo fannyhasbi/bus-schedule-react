@@ -10,6 +10,8 @@ import AddBus from './components/bus/AddBus';
 import Departure from './components/departure/Departure';
 import AddDeparture from './components/departure/AddDeparture';
 
+import Arrival from './components/arrival/Arrival';
+
 class App extends Component {
   render() {
     return (
@@ -19,6 +21,7 @@ class App extends Component {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/buses">Bus</Link></li>
             <li><Link to="/departure">Keberangkatan</Link></li>
+            <li><Link to="/arrival">Kedatangan</Link></li>
           </ul>
           
           <Route exact path="/"component={Home} />
@@ -26,6 +29,7 @@ class App extends Component {
           <Route path="/add-bus" component={AddBus} />
           <Route path="/departure" component={Departure} />
           <Route path="/add-departure" component={AddDeparture} />
+          <Route path="/arrival" component={Arrival} />
         </div>
       </BrowserRouter>
     );
