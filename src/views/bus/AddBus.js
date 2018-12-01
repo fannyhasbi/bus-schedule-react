@@ -4,6 +4,16 @@ import qs from 'qs';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Row,
+  Col
+} from 'reactstrap';
+
+import { PanelHeader, Button, FormInputs } from 'components';
+
 import BSR_APP from '../../config/constant';
 
 class AddBus extends React.Component {
@@ -19,6 +29,16 @@ class AddBus extends React.Component {
   }
 
   handleSave(){
+    if(this.state.perusahaan.length === 0){
+      Swal({
+        text: 'Harap isi nama perusahaan',
+        type: 'error',
+        toast: true
+      });
+
+      return;
+    }
+
     const postData = qs.stringify({
       perusahaan: this.state.perusahaan,
     });
@@ -61,21 +81,41 @@ class AddBus extends React.Component {
   
   render(){
     if(this.state.is_done)
-      return <Redirect to="/buses" />
+      return <Redirect to="/bus" />
 
     return (
       <div>
-        <h1>Tambah Bus</h1>
+        <PanelHeader size="sm" />
+        <div className="content">
+          <Row>
+            <Col md={8} xs={12}>
+              <Card>
+                <CardHeader>
+                  <h5 className="title">Tambah Bus</h5>
+                </CardHeader>
+                <CardBody>
+                  <FormInputs
+                    ncols={[
+                      "col-md-8"
+                    ]}
+                    proprieties={[
+                      {
+                        label: "Nama Perusahaan",
+                        inputProps: {
+                          type: "text",
+                          value: this.state.perusahaan,
+                          onChange: (e) => this.setState({ perusahaan: e.target.value })
+                        }
+                      }
+                    ]}
+                  />
 
-        <form>
-          <div>
-            <label htmlFor="Perusahaan">Perusahaan</label><br/>
-            <input type="text" value={this.state.perusahaan} onChange={(e) => this.setState({ perusahaan: e.target.value })} />
-
-            <br/><br/>
-            <button type="button" onClick={this.handleSave}>Simpan</button>
-          </div>
-        </form>
+                  <Button color="success" wd onClick={this.handleSave}>Simpan</Button>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }
