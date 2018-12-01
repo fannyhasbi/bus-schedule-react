@@ -57,7 +57,7 @@ class Departure extends React.Component {
             <Col xs={12}>
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Daftar Bus</CardTitle>
+                  <CardTitle tag="h4">Jadwal Keberangkatan Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table responsive>

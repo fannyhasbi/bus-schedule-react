@@ -3,6 +3,18 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardTitle,
+  Table,
+  Row,
+  Col
+} from 'reactstrap';
+
+import { PanelHeader } from 'components';
+
 import BSR_APP from '../../config/constant';
 
 class Arrival extends React.Component {
@@ -32,35 +44,46 @@ class Arrival extends React.Component {
   render(){
     return (
       <div>
-        <h1>Jadwal Kedatangan Bus</h1>
-
-        <Link to="/add-arrival">Tambah Jadwal Kedatangan</Link>
-        <br /><br />
-
-        <table border="1" cellSpacing="0" cellPadding="5">
-          <thead>
-            <tr>
-              <th>Perusahaan</th>
-              <th>Asal</th>
-              <th>Tujuan</th>
-              <th>Jam Keberangkatan</th>
-              <th>Jam Kedatangan</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.state.arrivals.map((el, i) => 
-                <tr key={el.id}>
-                  <td>{ el.nama_perusahaan }</td>
-                  <td>{ el.nama_asal }</td>
-                  <td>{ el.nama_tujuan }</td>
-                  <td>{ el.berangkat }</td>
-                  <td>{ el.datang }</td>
-                </tr>
-              )
-            }
-          </tbody>
-        </table>
+        <PanelHeader size="sm" />
+        <div className="content">
+          <Row>
+            <Col xs={12}>
+              <Card>
+                <CardHeader>
+                  <CardTitle tag="h4">Jadwal Kedatangan Bus</CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <Table>
+                    <thead className="text-primary">
+                      <tr>
+                        <th>Perusahaan</th>
+                        <th>Asal</th>
+                        <th>Tujuan</th>
+                        <th>Jam Keberangkatan</th>
+                        <th>Jam Kedatangan</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        this.state.arrivals.map((el, i) => {
+                          return (
+                            <tr key={i}>
+                              <td>{ el.nama_perusahaan }</td>
+                              <td>{ el.nama_asal }</td>
+                              <td>{ el.nama_tujuan }</td>
+                              <td>{ el.berangkat }</td>
+                              <td>{ el.datang }</td>
+                            </tr>
+                          )
+                        })
+                      }
+                    </tbody>
+                  </Table>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     )
   }
