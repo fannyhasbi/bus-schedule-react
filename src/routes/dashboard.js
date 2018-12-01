@@ -1,4 +1,4 @@
-import Buses from 'components/bus/Buses';
+import Buses from 'views/bus/Buses';
 
 var dashRoutes = [
   {

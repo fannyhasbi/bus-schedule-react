@@ -3,10 +3,7 @@ import React from 'react';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { Route, Switch, Redirect } from 'react-router';
 
-// import { Header, Footer, Sidebar } from 'components';
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer/Footer';
-import Sidebar from 'components/Sidebar/Sidebar';
+import { Header, Footer, Sidebar } from 'components';
 
 import dashboardRoutes from 'routes/dashboard.js';
 
