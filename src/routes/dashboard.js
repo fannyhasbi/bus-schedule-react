@@ -1,4 +1,5 @@
 import Buses from 'views/bus/Buses';
+import AddBus from 'views/bus/AddBus';
 import Departure from 'views/departure/Departure';
 import Arrival from 'views/arrival/Arrival';
 
@@ -8,6 +9,12 @@ var dashRoutes = [
     name: 'Daftar Bus',
     icon: 'transportation_bus-front-12',
     component: Buses
+  },
+  {
+    path: '/add-bus',
+    name: 'Tambah Bus',
+    icon: 'transportation_bus-front-12',
+    component: AddBus
   },
   {
     path: '/departure',

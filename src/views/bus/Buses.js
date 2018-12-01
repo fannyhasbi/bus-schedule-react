@@ -10,7 +10,8 @@ import {
   CardTitle,
   Table,
   Row,
-  Col
+  Col,
+  Button
 } from 'reactstrap';
 
 import { PanelHeader } from 'components';
@@ -53,6 +54,11 @@ class Buses extends React.Component {
                   <CardTitle tag="h4">Daftar Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
+                  <Link to="/add-bus">
+                    <Button color="info">
+                      <i className="now-ui-icons ui-1_simple-add"></i> Tambah Bus
+                    </Button>
+                  </Link>
                   <Table responsive>
                     <thead className="text-primary">
                       <tr>
