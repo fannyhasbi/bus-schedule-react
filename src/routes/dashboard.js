@@ -15,31 +15,31 @@ var dashRoutes = [
   {
     path: '/add-bus',
     name: 'Tambah Bus',
-    icon: 'transportation_bus-front-12',
+    icon: 'ui-1_simple-add',
     component: AddBus
   },
   {
     path: '/departure',
     name: 'Jadwal Keberangkatan',
-    icon: 'transportation_bus-front-12',
+    icon: 'shopping_delivery-fast',
     component: Departure
   },
   {
     path: '/add-departure',
     name: 'Tambah Jadwal Keberangkatan',
-    icon: 'transportation_bus-front-12',
+    icon: 'ui-1_simple-add',
     component: AddDeparture
   },
   {
     path: '/arrival',
     name: 'Jadwal Kedatangan',
-    icon: 'transportation_bus-front-12',
+    icon: 'ui-1_calendar-60',
     component: Arrival
   },
   {
     path: '/add-arrival',
     name: 'Tambah Jadwal Kedatangan',
-    icon: 'transportation_bus-front-12',
+    icon: 'ui-1_simple-add',
     component: AddArrival
   }
 ];
