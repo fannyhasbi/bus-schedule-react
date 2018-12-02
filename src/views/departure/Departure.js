@@ -10,7 +10,9 @@ import {
   CardTitle,
   Table,
   Row,
-  Col
+  Col,
+  Alert,
+  Button
 } from 'reactstrap';
 
 import { PanelHeader } from 'components';
@@ -29,6 +31,7 @@ class Departure extends React.Component {
   componentDidMount(){
     axios.get(BSR_APP.url + '/api/departure')
     .then((response) => {
+      console.log(response);
       if(response.data.status === 200){
         this.setState({
           departures: response.data.data
@@ -49,6 +52,41 @@ class Departure extends React.Component {
   }
 
   render(){
+    const content = this.state.departures.length === 0 ?
+      (
+        <div>
+          <Alert color="warning">Tidak ada jadwal keberangkatan bus hari ini.</Alert>
+        </div>
+      ) :
+      (
+        <Table responsive>
+          <thead className="text-primary">
+            <tr>
+              <th>Perusahaan</th>
+              <th>Asal</th>
+              <th>Tujuan</th>
+              <th>Jam Berangkat</th>
+              <th>Jam Sampai</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.state.departures.map((el, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{ el.nama_perusahaan }</td>
+                    <td>{ el.nama_asal }</td>
+                    <td>{ el.nama_tujuan }</td>
+                    <td>{ this.time_formatter(el.berangkat) }</td>
+                    <td>{ this.time_formatter(el.sampai) }</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </Table>
+      )
+
     return (
       <div>
         <PanelHeader size="sm" />
@@ -60,71 +98,17 @@ class Departure extends React.Component {
                   <CardTitle tag="h4">Jadwal Keberangkatan Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Table responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Perusahaan</th>
-                        <th>Asal</th>
-                        <th>Tujuan</th>
-                        <th>Jam Berangkat</th>
-                        <th>Jam Sampai</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        this.state.departures.map((el, i) => {
-                          return (
-                            <tr key={i}>
-                              <td>{ el.nama_perusahaan }</td>
-                              <td>{ el.nama_asal }</td>
-                              <td>{ el.nama_tujuan }</td>
-                              <td>{ this.time_formatter(el.berangkat) }</td>
-                              <td>{ this.time_formatter(el.sampai) }</td>
-                            </tr>
-                          )
-                        })
-                      }
-                    </tbody>
-                  </Table>
+                  <Link to="/add-departure">
+                    <Button color="info">
+                      <i className="now-ui-icons ui-1_simple-add"></i> Tambah Jadwal Keberangkatan
+                    </Button>
+                  </Link>
+                  { content }
                 </CardBody>
               </Card>
             </Col>
           </Row>
         </div>
-      </div>
-    )
-  }
-
-  render_old(){
-    return (
-      <div>
-        <h1>Jadwal Keberangkatan Bus</h1>
-        <Link to="/add-departure">Tambah Jadwal Keberangkatan</Link><br/><br/>
-
-        <table border="1" cellSpacing="0" cellPadding="5">
-          <thead>
-            <tr>
-              <th>Perusahaan</th>
-              <th>Asal</th>
-              <th>Tujuan</th>
-              <th>Jam Berangkat</th>
-              <th>Jam Sampai</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.state.departures.map((el, i) => 
-                <tr key={el.id}>
-                  <td>{ el.nama_perusahaan }</td>
-                  <td>{ el.nama_asal }</td>
-                  <td>{ el.nama_tujuan }</td>
-                  <td>{ el.berangkat }</td>
-                  <td>{ el.sampai }</td>
-                </tr>
-              )
-            }
-          </tbody>
-        </table>
       </div>
     )
   }
