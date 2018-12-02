@@ -54,9 +54,7 @@ class Departure extends React.Component {
   render(){
     const content = this.state.departures.length === 0 ?
       (
-        <div>
-          <Alert color="warning">Tidak ada jadwal keberangkatan bus hari ini.</Alert>
-        </div>
+        <Alert color="warning">Tidak ada jadwal keberangkatan bus hari ini.</Alert>
       ) :
       (
         <Table responsive>

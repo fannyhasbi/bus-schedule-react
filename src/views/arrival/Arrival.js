@@ -10,7 +10,9 @@ import {
   CardTitle,
   Table,
   Row,
-  Col
+  Col,
+  Alert,
+  Button
 } from 'reactstrap';
 
 import { PanelHeader } from 'components';
@@ -42,6 +44,39 @@ class Arrival extends React.Component {
   }
 
   render(){
+    const content = this.state.arrivals.length === 0 ? 
+      (
+        <Alert color="warning">Tidak ada jadwal kedatangan bus hari ini.</Alert>
+      ) :
+      (
+        <Table>
+          <thead className="text-primary">
+            <tr>
+              <th>Perusahaan</th>
+              <th>Asal</th>
+              <th>Tujuan</th>
+              <th>Jam Keberangkatan</th>
+              <th>Jam Kedatangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.state.arrivals.map((el, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{ el.nama_perusahaan }</td>
+                    <td>{ el.nama_asal }</td>
+                    <td>{ el.nama_tujuan }</td>
+                    <td>{ el.berangkat }</td>
+                    <td>{ el.datang }</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </Table>
+      )
+
     return (
       <div>
         <PanelHeader size="sm" />
@@ -53,32 +88,12 @@ class Arrival extends React.Component {
                   <CardTitle tag="h4">Jadwal Kedatangan Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Table>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Perusahaan</th>
-                        <th>Asal</th>
-                        <th>Tujuan</th>
-                        <th>Jam Keberangkatan</th>
-                        <th>Jam Kedatangan</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        this.state.arrivals.map((el, i) => {
-                          return (
-                            <tr key={i}>
-                              <td>{ el.nama_perusahaan }</td>
-                              <td>{ el.nama_asal }</td>
-                              <td>{ el.nama_tujuan }</td>
-                              <td>{ el.berangkat }</td>
-                              <td>{ el.datang }</td>
-                            </tr>
-                          )
-                        })
-                      }
-                    </tbody>
-                  </Table>
+                  <Link to="/add-arrival">
+                    <Button color="info">
+                      <i className="now-ui-icons ui-1_simple-add"></i> Tambah Jadwal Kedatangan
+                    </Button>
+                  </Link>
+                  { content }           
                 </CardBody>
               </Card>
             </Col>
