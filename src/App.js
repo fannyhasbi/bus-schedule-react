@@ -13,6 +13,8 @@ import AddDeparture from './components/departure/AddDeparture';
 import Arrival from './components/arrival/Arrival';
 import AddArrival from './components/arrival/AddArrival';
 
+import Try from './components/arrival/Try';
+
 class App extends Component {
   render() {
     return (
@@ -32,6 +34,7 @@ class App extends Component {
           <Route path="/add-departure" component={AddDeparture} />
           <Route path="/arrival" component={Arrival} />
           <Route path="/add-arrival" component={AddArrival} />
+          <Route path="/try" component={Try} />
         </div>
       </BrowserRouter>
     );
