@@ -86,6 +86,7 @@ class AddDeparture extends React.Component {
             sampai: val
           });
           break;
+        default: return false;
       }
     }
     else {
@@ -100,6 +101,7 @@ class AddDeparture extends React.Component {
             is_sampai_valid: false,
           });
           break;
+        default: return false;
       }
     }
   }

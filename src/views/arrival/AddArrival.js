@@ -86,6 +86,7 @@ class AddDeparture extends React.Component {
             datang: val
           });
           break;
+        default: return false;
       }
     }
     else {
@@ -99,6 +100,8 @@ class AddDeparture extends React.Component {
           this.setState({
             is_datang_valid: false
           });
+          break;
+        default: return false;
       }
     }
   }
