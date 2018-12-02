@@ -28,7 +28,7 @@
     "sweetalert2": "^7.29.2"
   },
   "scripts": {
-    "start": "NODE_PATH=./src npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

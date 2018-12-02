@@ -6,9 +6,9 @@ import { Router, Route, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "assets/scss/now-ui-dashboard.css";
+import "./assets/scss/now-ui-dashboard.css";
 
-import indexRoutes from 'routes/index.js';
+import indexRoutes from './routes/index.js';
 import NotFound from './views/NotFound';
 
 const hist = createBrowserHistory();

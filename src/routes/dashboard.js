@@ -1,9 +1,9 @@
-import Buses from 'views/bus/Buses';
-import AddBus from 'views/bus/AddBus';
-import Departure from 'views/departure/Departure';
-import AddDeparture from 'views/departure/AddDeparture';
-import Arrival from 'views/arrival/Arrival';
-import AddArrival from 'views/arrival/AddArrival';
+import Buses from '../views/bus/Buses';
+import AddBus from '../views/bus/AddBus';
+import Departure from '../views/departure/Departure';
+import AddDeparture from '../views/departure/AddDeparture';
+import Arrival from '../views/arrival/Arrival';
+import AddArrival from '../views/arrival/AddArrival';
 
 var dashRoutes = [
   {
