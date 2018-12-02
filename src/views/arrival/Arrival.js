@@ -43,6 +43,13 @@ class Arrival extends React.Component {
     });
   }
 
+  time_formatter(_date){
+    var _time = _date.split(' ')[1];
+    _time = _time.split(':', 2);
+    _time = _time.join(':');
+    return _time;
+  }
+
   render(){
     const content = this.state.arrivals.length === 0 ? 
       (
@@ -67,8 +74,8 @@ class Arrival extends React.Component {
                     <td>{ el.nama_perusahaan }</td>
                     <td>{ el.nama_asal }</td>
                     <td>{ el.nama_tujuan }</td>
-                    <td>{ el.berangkat }</td>
-                    <td>{ el.datang }</td>
+                    <td>{ this.time_formatter(el.berangkat) }</td>
+                    <td>{ this.time_formatter(el.datang) }</td>
                   </tr>
                 )
               })
