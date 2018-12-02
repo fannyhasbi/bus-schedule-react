@@ -1,6 +1,8 @@
 # Bus Schedule
 Bus Schedule is an Information System Application built with React.
 
+![Bus Schedule React](./ss.png "Bus Schedule React")
+
 ## Preparation
 * Make sure you have Node and NPM on your local machine
 * Download and Install the [Bus Schedule REST](https://github.com/fannyhasbi/bus-schedule-rest) repository on your local server and can be accessed via `http://localhost/bus-schedule-rest`.
