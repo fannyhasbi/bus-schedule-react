@@ -3,6 +3,7 @@ import AddBus from 'views/bus/AddBus';
 import Departure from 'views/departure/Departure';
 import AddDeparture from 'views/departure/AddDeparture';
 import Arrival from 'views/arrival/Arrival';
+import AddArrival from 'views/arrival/AddArrival';
 
 var dashRoutes = [
   {
@@ -34,6 +35,12 @@ var dashRoutes = [
     name: 'Jadwal Kedatangan',
     icon: 'transportation_bus-front-12',
     component: Arrival
+  },
+  {
+    path: '/add-arrival',
+    name: 'Tambah Jadwal Kedatangan',
+    icon: 'transportation_bus-front-12',
+    component: AddArrival
   }
 ];
 

@@ -1,9 +1,21 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import TimeInput from 'react-time-input';
 import Swal from 'sweetalert2';
 import qs from 'qs';
 import axios from 'axios';
+
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  Input
+} from 'reactstrap';
+
+import { PanelHeader, Button } from 'components';
 
 import BSR_APP from '../../config/constant';
 
@@ -19,9 +31,12 @@ class AddDeparture extends React.Component {
       id_asal: 1,
       id_tujuan: 1,
       berangkat: '00:00',
-      datang: '00:00'
+      is_berangkat_valid: false,
+      datang: '00:00',
+      is_datang_valid: false
     }
 
+    this.time_validator = this.time_validator.bind(this);
     this.handleSave = this.handleSave.bind(this);
   }
 
@@ -53,6 +68,41 @@ class AddDeparture extends React.Component {
     });
   }
 
+  time_validator(stateName, val){
+    const regex = new RegExp("([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]");
+    const cek = regex.test(val);
+
+    if(cek){
+      switch(stateName){
+        case 'berangkat':
+          this.setState({
+            is_berangkat_valid: true,
+            berangkat: val
+          });
+          break;
+        case 'datang':
+          this.setState({
+            is_datang_valid: true,
+            datang: val
+          });
+          break;
+      }
+    }
+    else {
+      switch(stateName){
+        case 'berangkat':
+          this.setState({
+            is_berangkat_valid: false,
+          });
+          break;
+        case 'datang':
+          this.setState({
+            is_datang_valid: false
+          });
+      }
+    }
+  }
+
   handleSave(e){
     e.preventDefault();
 
@@ -61,7 +111,9 @@ class AddDeparture extends React.Component {
       id_tujuan,
       id_asal,
       berangkat,
-      datang } = this.state;
+      datang,
+      is_berangkat_valid,
+      is_datang_valid } = this.state;
 
     const postData = qs.stringify({
       id_perusahaan,
@@ -70,6 +122,15 @@ class AddDeparture extends React.Component {
       berangkat,
       datang
     });
+
+    if(!is_berangkat_valid || !is_datang_valid){
+      Swal({
+        text: 'Format waktu datang atau berangkat salah. (HH:MM)',
+        type: 'warning',
+        toast: true
+      });
+      return;
+    }
 
     axios.post(BSR_APP.url + '/api/add-arrival',
       postData,
@@ -110,56 +171,63 @@ class AddDeparture extends React.Component {
   render(){
     if(this.state.is_done)
       return <Redirect to="/arrival" />
-
-    return (
+    
+    return(
       <div>
-        <h1>Tambah Jadwal Kedatangan Bus</h1>
-        <br/>
+        <PanelHeader size="sm" />
+        <div className="content">
+          <Row>
+            <Col md={8} xs={12}>
+              <Card>
+                <CardHeader>
+                  <h5 className="title">Tambah Jadwal Kedatangan</h5>
+                </CardHeader>
+                <CardBody>
+                  <FormGroup>
+                    <Label>Perusahaan</Label>
+                    <Input type="select" name="perusahaan" id="id_perusahaan" onChange={(e) => this.setState({ id_perusahaan: e.target.value })}>
+                      {
+                        this.state.list_bus.map((el, i) => 
+                          <option key={i} value={el.id}>{el.nama}</option>
+                        )
+                      }
+                    </Input>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Asal</Label>
+                    <Input type="select" name="asal" id="id_asal" onChange={(e) => this.setState({ id_asal: e.target.value })}>
+                      {
+                        this.state.list_tempat.map((el, i) => 
+                          <option key={i} value={el.id}>{el.nama}</option>
+                        )
+                      }
+                    </Input>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Tujuan</Label>
+                    <Input type="select" name="tujuan" id="id_tujuan" onChange={(e) => this.setState({ id_tujuan: e.target.value })}>
+                      {
+                        this.state.list_tempat.map((el, i) => 
+                          <option key={i} value={el.id}>{el.nama}</option>
+                        )
+                      }
+                    </Input>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Berangkat</Label>
+                    <Input type="text" name="berangkat" id="berangkat" defaultValue={this.state.berangkat} onChange={(e) => this.time_validator('berangkat', e.target.value)} />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Datang</Label>
+                    <Input type="text" name="datang" id="datang" defaultValue={this.state.datang} onChange={(e) => this.time_validator('datang', e.target.value)} />
+                  </FormGroup>
 
-        <form onSubmit={this.handleSave} >
-          <label htmlFor="perusahaan">Perusahaan</label><br/>
-          <select onChange={(e) => this.setState({ id_perusahaan: e.target.value })}>
-            {
-              this.state.list_bus.map((el, i) => 
-                <option key={i} value={el.id}>{el.nama}</option>
-              )
-            }
-          </select><br/>
-
-          <label htmlFor="asal">Asal</label>
-          <select onChange={(e) => this.setState({ id_asal: e.target.value })}>
-            {
-              this.state.list_tempat.map((el, i) => 
-                <option key={i} value={el.id}>{el.nama}</option>
-              )
-            }
-          </select><br/>
-
-          <label htmlFor="tujuan">Tujuan</label>
-          <select onChange={(e) => this.setState({ id_tujuan: e.target.value })}>
-            {
-              this.state.list_tempat.map((el, i) => 
-                <option key={i} value={el.id}>{el.nama}</option>
-              )
-            }
-          </select><br/>
-
-          <label htmlFor="berangkat">Jam Berangkat</label>
-          <TimeInput
-            initTime={this.state.berangkat}
-            onTimeChange={(val) => this.setState({ berangkat: val })}
-          />
-          <br/>
-
-          <label htmlFor="datang">Jam Kedatangan</label>
-          <TimeInput
-            initTime={this.state.datang}
-            onTimeChange={(val) => this.setState({ datang: val })}
-          />
-          <br/>
-
-          <input type="submit" value="Simpan Jadwal" onClick={this.handleSave} />
-        </form>
+                  <Button color="success" wd onClick={this.handleSave}>Simpan</Button>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     )
   }
