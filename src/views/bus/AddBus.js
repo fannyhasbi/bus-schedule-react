@@ -81,7 +81,7 @@ class AddBus extends React.Component {
   
   render(){
     if(this.state.is_done)
-      return <Redirect to="/bus" />
+      return <Redirect to="/admin/bus" />
 
     return (
       <div>

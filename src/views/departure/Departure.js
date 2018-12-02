@@ -96,7 +96,7 @@ class Departure extends React.Component {
                   <CardTitle tag="h4">Jadwal Keberangkatan Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Link to="/add-departure">
+                  <Link to="/admin/add-departure">
                     <Button color="info">
                       <i className="now-ui-icons ui-1_simple-add"></i> Tambah Jadwal Keberangkatan
                     </Button>

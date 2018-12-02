@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "assets/scss/now-ui-dashboard.css";
 
 import indexRoutes from 'routes/index.js';
+import NotFound from './views/NotFound';
 
 const hist = createBrowserHistory();
 
@@ -16,8 +17,9 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       {indexRoutes.map((prop, key) => {
-        return <Route path={prop.path} key={key} component={prop.component} />;
+        return <Route path={prop.path} key={key} component={prop.component} {...prop} />;
       })}
+      <Route component={NotFound} />
     </Switch>
   </Router>
   , document.getElementById('root'));

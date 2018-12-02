@@ -173,7 +173,7 @@ class AddDeparture extends React.Component {
 
   render(){
     if(this.state.is_done)
-      return <Redirect to="/departure" />
+      return <Redirect to="/admin/departure" />
 
     return (
       <div>

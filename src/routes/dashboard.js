@@ -7,37 +7,37 @@ import AddArrival from 'views/arrival/AddArrival';
 
 var dashRoutes = [
   {
-    path: '/bus',
+    path: '/admin/bus',
     name: 'Daftar Bus',
     icon: 'transportation_bus-front-12',
     component: Buses
   },
   {
-    path: '/add-bus',
+    path: '/admin/add-bus',
     name: 'Tambah Bus',
     icon: 'ui-1_simple-add',
     component: AddBus
   },
   {
-    path: '/departure',
+    path: '/admin/departure',
     name: 'Jadwal Keberangkatan',
     icon: 'shopping_delivery-fast',
     component: Departure
   },
   {
-    path: '/add-departure',
+    path: '/admin/add-departure',
     name: 'Tambah Jadwal Keberangkatan',
     icon: 'ui-1_simple-add',
     component: AddDeparture
   },
   {
-    path: '/arrival',
+    path: '/admin/arrival',
     name: 'Jadwal Kedatangan',
     icon: 'ui-1_calendar-60',
     component: Arrival
   },
   {
-    path: '/add-arrival',
+    path: '/admin/add-arrival',
     name: 'Tambah Jadwal Kedatangan',
     icon: 'ui-1_simple-add',
     component: AddArrival

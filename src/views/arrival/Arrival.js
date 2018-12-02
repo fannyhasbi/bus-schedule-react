@@ -88,7 +88,7 @@ class Arrival extends React.Component {
                   <CardTitle tag="h4">Jadwal Kedatangan Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Link to="/add-arrival">
+                  <Link to="/admin/add-arrival">
                     <Button color="info">
                       <i className="now-ui-icons ui-1_simple-add"></i> Tambah Jadwal Kedatangan
                     </Button>

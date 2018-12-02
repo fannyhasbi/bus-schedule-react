@@ -54,7 +54,7 @@ class Buses extends React.Component {
                   <CardTitle tag="h4">Daftar Bus</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Link to="/add-bus">
+                  <Link to="/admin/add-bus">
                     <Button color="info">
                       <i className="now-ui-icons ui-1_simple-add"></i> Tambah Bus
                     </Button>
