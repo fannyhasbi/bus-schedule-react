@@ -12,7 +12,7 @@ import {
   Col
 } from 'reactstrap';
 
-import { PanelHeader, Button, FormInputs } from 'components';
+import { PanelHeader, Button, FormInputs } from '../../components';
 
 import BSR_APP from '../../config/constant';
 

@@ -1,5 +1,5 @@
-import Home from 'views/Home';
-import Dashboard from 'layouts/Dashboard/Dashboard';
+import Home from '../views/Home';
+import Dashboard from '../layouts/Dashboard/Dashboard';
 
 var indexRoutes = [
   {
