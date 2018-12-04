@@ -5,7 +5,7 @@ import { Nav } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
 import { Link } from "react-router-dom";
 
-import logo from "logo-white.svg";
+import logo from '../../bus.png';
 
 var ps;
 

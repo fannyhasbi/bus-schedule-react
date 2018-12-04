@@ -15,7 +15,7 @@ import {
   Button
 } from 'reactstrap';
 
-import { PanelHeader } from 'components';
+import { PanelHeader } from '../../components';
 
 import BSR_APP from '../../config/constant';
 
@@ -31,7 +31,6 @@ class Departure extends React.Component {
   componentDidMount(){
     axios.get(BSR_APP.url + '/api/departure')
     .then((response) => {
-      console.log(response);
       if(response.data.status === 200){
         this.setState({
           departures: response.data.data
@@ -63,8 +62,8 @@ class Departure extends React.Component {
               <th>Perusahaan</th>
               <th>Asal</th>
               <th>Tujuan</th>
-              <th>Jam Berangkat</th>
-              <th>Jam Sampai</th>
+              <th>Berangkat</th>
+              <th>Sampai</th>
             </tr>
           </thead>
           <tbody>

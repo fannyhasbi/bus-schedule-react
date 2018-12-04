@@ -15,7 +15,7 @@ import {
   Input
 } from 'reactstrap';
 
-import { PanelHeader, Button } from 'components';
+import { PanelHeader, Button } from '../../components';
 
 import BSR_APP from '../../config/constant';
 
