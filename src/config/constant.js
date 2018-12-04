@@ -1,5 +1,5 @@
 const BSR_APP = {
-  url: 'http://localhost/bus-schedule-rest'
+  url: 'https://bus-schedule.000webhostapp.com'
 }
 
 export default BSR_APP;
