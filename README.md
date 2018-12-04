@@ -27,16 +27,22 @@ Bus Schedule is an Information System Application built with React.
 I use [Firebase](https://firebase.google.com) to deploy this project. So, if you wanna deploy it to another source feel free to follow these guide lines and read your hosting documentation to deploy.
 
 1. `npm run build`
+   
    It will create a folder called `build` which contains minified and production-ready js files
+
 2. Log in to your firebase
+   
    `firebase login`
+
 3. Initiate and choose a hosting
+   
    `firebase init`
+
 4. If you are requested to choose deployment directory, just type `build` (not `public` directory).
+
 5. Deploy it using `firebase deploy` and it's all done.
 
 If you want to deploy it again, just simply type
-
 ```bash
 npm run deploy:firebase
 ```
@@ -55,6 +61,6 @@ All constant values are store in `/src/config/constant.js`
 5. Push your changes (`git push origin -am "My awesome features"`)
 4. Create new **Pull Request** to this repo
 
-<center>
+<p align="center" style="text-align:center">
   <h2>Happy Coding!</h2>
-</center>
+</p>
