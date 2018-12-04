@@ -63,8 +63,8 @@ class Departure extends React.Component {
               <th>Perusahaan</th>
               <th>Asal</th>
               <th>Tujuan</th>
-              <th>Jam Berangkat</th>
-              <th>Jam Sampai</th>
+              <th>Berangkat</th>
+              <th>Sampai</th>
             </tr>
           </thead>
           <tbody>

@@ -56,14 +56,14 @@ class Arrival extends React.Component {
         <Alert color="warning">Tidak ada jadwal kedatangan bus hari ini.</Alert>
       ) :
       (
-        <Table>
+        <Table responsive>
           <thead className="text-primary">
             <tr>
               <th>Perusahaan</th>
               <th>Asal</th>
               <th>Tujuan</th>
-              <th>Jam Keberangkatan</th>
-              <th>Jam Kedatangan</th>
+              <th>Berangkat</th>
+              <th>Datang</th>
             </tr>
           </thead>
           <tbody>
