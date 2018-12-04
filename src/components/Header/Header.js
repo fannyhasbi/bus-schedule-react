@@ -1,9 +1,14 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Container,
+  Collapse,
+  Nav,
+  NavItem,
+  Button
 } from "reactstrap";
 
 import dashboardRoutes from "../../routes/dashboard";
@@ -14,10 +19,12 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
       dropdownOpen: false,
-      color: "transparent"
+      color: "transparent",
+      logoutClicked: false
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
+    this.logout = this.logout.bind(this);
   }
   toggle() {
     if (this.state.isOpen) {
@@ -92,7 +99,15 @@ class Header extends React.Component {
       this.refs.sidebarToggle.classList.toggle("toggled");
     }
   }
+
+  logout(){
+    this.setState({ logoutClicked: true });
+  }
+
   render() {
+    if(this.state.logoutClicked)
+      return <Redirect to="/" />
+    
     return (
       // add or remove classes depending if we are on full-screen-maps page or not
       <Navbar
@@ -130,6 +145,27 @@ class Header extends React.Component {
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
           </NavbarToggler>
+          <Collapse
+            isOpen={this.state.isOpen}
+            navbar
+            className="justify-content-end"
+          >
+            <Nav navbar>
+              <NavItem>
+                <Button
+                  color="link"
+                  className="nav-link"
+                  title="Keluar"
+                  onClick={this.logout}
+                >
+                  <i className="now-ui-icons ui-1_simple-remove" />
+                  <p>
+                    <span className="d-lg-none d-md-block">Keluar</span>
+                  </p>
+                </Button>
+              </NavItem>
+            </Nav>
+          </Collapse>
         </Container>
       </Navbar>
     );
