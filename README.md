@@ -14,7 +14,7 @@ Bus Schedule is an Information System Application built with React.
 
 ## Preparation
 * Make sure you have Node and NPM on your local machine
-* Download and Install the server-side application
+* Choose one of the server-side application below and **install** it
    * [Bus REST PHP](https://github.com/fannyhasbi/bus-schedule-rest)
    * [Bus REST Golang](https://github.com/fannyhasbi/bus-schedule-rest-go)
 
