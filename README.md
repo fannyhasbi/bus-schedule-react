@@ -3,17 +3,20 @@ Bus Schedule is an Information System Application built with React.
 
 ![Bus Schedule React](./ss.png "Bus Schedule React")
 
+---
 ## Table of Contents
 * [Preparation](#preparation)
 * [Installation](#installation)
 * [Deployment](#deployment)
 * [Additional Notes](#notes)
 * [Contributing](#contributing)
-
+---
 
 ## Preparation
 * Make sure you have Node and NPM on your local machine
-* Download and Install the [Bus Schedule REST](https://github.com/fannyhasbi/bus-schedule-rest) repository on your local server and can be accessed via `http://localhost/bus-schedule-rest`.
+* Download and Install the server-side application
+   * [Bus REST PHP](https://github.com/fannyhasbi/bus-schedule-rest)
+   * [Bus REST Golang](https://github.com/fannyhasbi/bus-schedule-rest-go)
 
 ## Installation
 1. Clone or Download this repository
@@ -61,6 +64,4 @@ All constant values are store in `/src/config/constant.js`
 5. Push your changes (`git push origin -am "My awesome features"`)
 4. Create new **Pull Request** to this repo
 
-<p align="center" style="text-align:center">
-  <h2>Happy Coding!</h2>
-</p>
+<h2>Happy Coding!</h2>
